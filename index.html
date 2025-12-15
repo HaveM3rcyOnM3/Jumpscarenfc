@@ -43,7 +43,7 @@
     const audio = document.getElementById('scream');
 
     btn.addEventListener('click', () => {
-      btn.style.display = 'none';
+      btn.style.opacity = '0.5';
 
       // hangerő max
       audio.volume = 1.0;
@@ -56,9 +56,9 @@
       audio.play();
 
       // villogó háttér
-      let flash = false;
+      let flash = true;
       setInterval(() => {
-        document.body.style.background = flash ? '#000' : '#fff';
+        document.body.style.background = flash ? 'rgba(0,0,0,0.5)' : '#fff';
         flash = !flash;
       }, 80);
     });
