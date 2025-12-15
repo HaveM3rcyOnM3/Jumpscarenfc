@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nyeremény!</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button {
+      font-size: 2rem;
+      padding: 1.5rem 2.5rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: #00ff99;
+      color: #000;
+      box-shadow: 0 0 20px #00ff99;
+    }
+    button:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+<body>
+  <img id="start" src="minion.jpg" alt="Nyeremény" style="width:80%;max-width:400px;cursor:pointer;" />
+
+  <audio id="scream" preload="auto">
+    <source src="scream.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const btn = document.getElementById('start');
+    const audio = document.getElementById('scream');
+
+    btn.addEventListener('click', () => {
+      btn.style.display = 'none';
+
+      // hangerő max
+      audio.volume = 1.0;
+
+      // teljes képernyő (ha engedi)
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(()=>{});
+      }
+
+      audio.play();
+
+      // villogó háttér
+      let flash = false;
+      setInterval(() => {
+        document.body.style.background = flash ? '#000' : '#fff';
+        flash = !flash;
+      }, 80);
+    });
+  </script>
+</body>
+</html>
